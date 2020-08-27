@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    double input1 = 0, input2 = 0;
-    double finalans=0;
+    double input1 = 0.0, input2 = 0.0;
+    double finalans=0.0;
     String Extra_text;
     Button button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, buttonAdd, buttonSub,
             buttonMul, buttonDiv, buttonEqual, buttonDel, buttonDot, buttonMod,nextpage;
@@ -235,8 +235,10 @@ public class MainActivity extends AppCompatActivity {
 
                     if (result.getText() != null) {
                         Intent in = new Intent(MainActivity.this, ResultActivity.class);
-
-                        in.putExtra("res", String.valueOf(finalans));
+                           if(finalans%1==0)
+                               in.putExtra("res", String.valueOf(Math.round(finalans)));
+                               else
+                               in.putExtra("res", String.valueOf(finalans));
                         startActivity(in);
                     }
 
