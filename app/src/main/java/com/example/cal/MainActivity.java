@@ -2,6 +2,7 @@ package com.example.cal;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +12,10 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     double input1 = 0, input2 = 0;
+    double finalans=0;
+    String Extra_text;
     Button button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, buttonAdd, buttonSub,
-            buttonMul, buttonDiv, buttonEqual, buttonDel, buttonDot, buttonMod;
+            buttonMul, buttonDiv, buttonEqual, buttonDel, buttonDot, buttonMod,nextpage;
     TextView result;
     boolean Addition, Subtract, Multiplication, Division, Remainder, decimal;
     @Override
@@ -39,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         buttonMod = (Button) findViewById(R.id.Buttonmod);
         buttonDel = (Button) findViewById(R.id.del);
         buttonEqual = (Button) findViewById(R.id.equals);
-
         result = (TextView) findViewById(R.id.display);
 
         button0.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
                 result.setText(String.format("%s9", result.getText()));
             }
         });
-
         buttonDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -187,44 +188,65 @@ public class MainActivity extends AppCompatActivity {
                     decimal = false;
                     result.setText(null);
                 }
+
             }
         });
 
         buttonEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Addition){
-                    input2 = Double.parseDouble(result.getText() + "");
-                    decimal = false;
-                    result.setText(input1+input2+"");
-                    Addition = false;
-                }
-                if(Subtract){
-                    input2 = Double.parseDouble(result.getText() + "");
-                    decimal = false;
-                    result.setText(input1-input2+"");
-                    Subtract = false;
-                }
-                if(Multiplication){
-                    input2 = Double.parseDouble(result.getText() + "");
-                    decimal = false;
-                    result.setText(input1*input2+"");
-                    Multiplication = false;
-                }
-                if(Division){
-                    input2 = Double.parseDouble(result.getText() + "");
-                    decimal = false;
-                    result.setText(input1/input2+"");
-                    Division = false;
-                }
-                if(Remainder){
-                    input2 = Double.parseDouble(result.getText() + "");
-                    decimal = false;
-                    result.setText(input1%input2+"");
-                    Remainder = false;
-                }
+
+
+                    if (Addition) {
+                        input2 = Double.parseDouble(result.getText() + "");
+                        decimal = false;
+                        finalans = input1 + input2;
+                        result.setText(null);
+                        Addition = false;
+                    }
+                    if (Subtract) {
+                        input2 = Double.parseDouble(result.getText() + "");
+                        decimal = false;
+                        finalans = input1 - input2;
+                        result.setText(null);
+                        Subtract = false;
+                    }
+                    if (Multiplication) {
+                        input2 = Double.parseDouble(result.getText() + "");
+                        decimal = false;
+                        finalans = input1 * input2;
+                        result.setText(null);
+                        Multiplication = false;
+                    }
+                    if (Division) {
+                        input2 = Double.parseDouble(result.getText() + "");
+                        decimal = false;
+                        finalans = input1 / input2;
+                        result.setText(null);
+                        Division = false;
+                    }
+                    if (Remainder) {
+                        input2 = Double.parseDouble(result.getText() + "");
+                        decimal = false;
+                        finalans = input1 % input2;
+                        result.setText(null);
+                        Remainder = false;
+                    }
+
+                    if (result.getText() != null) {
+                        Intent in = new Intent(MainActivity.this, ResultActivity.class);
+
+                        in.putExtra("res", String.valueOf(finalans));
+                        startActivity(in);
+                    }
+
+
             }
         });
+
+
+
+
 
     }
 }
