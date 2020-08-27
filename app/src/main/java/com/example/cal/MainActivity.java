@@ -2,8 +2,10 @@ package com.example.cal;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     Button buttonDot;
     Button buttonMod;
     TextView result;
-    boolean Addition, Subtract, Multiplication, Division, Remainder, decimal;
+    boolean Addition, Subtract, Multiplication, Division, Remainder, decimal,zeroError=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result.setText(String.format("%s0", result.getText()));
+                Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vi.vibrate(10);
             }
         });
 
@@ -73,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result.setText(String.format("%s1", result.getText()));
+                Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vi.vibrate(10);
             }
         });
 
@@ -80,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result.setText(String.format("%s2", result.getText()));
+                Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vi.vibrate(10);
             }
         });
 
@@ -87,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result.setText(String.format("%s3", result.getText()));
+                Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vi.vibrate(10);
             }
         });
 
@@ -94,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result.setText(String.format("%s4", result.getText()));
+                Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vi.vibrate(10);
             }
         });
 
@@ -101,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result.setText(String.format("%s5", result.getText()));
+                Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vi.vibrate(10);
             }
         });
 
@@ -108,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result.setText(String.format("%s6", result.getText()));
+                Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vi.vibrate(10);
             }
         });
 
@@ -115,6 +131,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result.setText(String.format("%s7", result.getText()));
+                Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vi.vibrate(10);
             }
         });
 
@@ -122,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result.setText(String.format("%s8", result.getText()));
+                Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vi.vibrate(10);
             }
         });
 
@@ -129,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result.setText(String.format("%s9", result.getText()));
+                Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vi.vibrate(10);
             }
         });
         buttonDot.setOnClickListener(new View.OnClickListener() {
@@ -136,9 +158,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (decimal) {
                     Toast.makeText(getApplicationContext(),"It dosent make sense ",Toast.LENGTH_LONG).show();
+                    Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vi.vibrate(200);
                 } else {
                     result.setText(String.format("%s.", result.getText()));
                     decimal = true;
+                    Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vi.vibrate(10);
                 }
 
             }
@@ -146,6 +172,8 @@ public class MainActivity extends AppCompatActivity {
         buttonDel.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vi.vibrate(10);
                 result.setText("");
                 input1 = 0.0;
                 input2 = 0.0;
@@ -157,6 +185,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(result.getText().length() != 0){
+                    Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vi.vibrate(10);
                     input1 = Double.parseDouble(result.getText() + "");
                     Addition = true;
                     decimal = false;
@@ -168,6 +198,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(result.getText().length() != 0){
+                    Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vi.vibrate(10);
                     input1 = Double.parseDouble(result.getText() + "");
                     Subtract = true;
                     decimal = false;
@@ -179,6 +211,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(result.getText().length() != 0){
+                    Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vi.vibrate(10);
                     input1 = Double.parseDouble(result.getText() + "");
                     Multiplication = true;
                     decimal = false;
@@ -190,6 +224,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(result.getText().length() != 0){
+                    Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vi.vibrate(10);
                     input1 = Double.parseDouble(result.getText() + "");
                     Division = true;
                     decimal = false;
@@ -201,6 +237,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(result.getText().length() != 0){
+                    Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vi.vibrate(10);
                     input1 = Double.parseDouble(result.getText() + "");
                     Remainder = true;
                     decimal = false;
@@ -213,9 +251,13 @@ public class MainActivity extends AppCompatActivity {
         buttonEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vib.vibrate(10);
                 if (result.getText() == "") {
-                    Toast.makeText(getApplicationContext(), "It dosent make sense ", Toast.LENGTH_LONG).show();
 
+                    Toast.makeText(getApplicationContext(), "It dosent make sense ", Toast.LENGTH_LONG).show();
+                    Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vi.vibrate(200);
 
                 } else {
                     if (Addition) {
@@ -242,9 +284,17 @@ public class MainActivity extends AppCompatActivity {
                     if (Division) {
                         input2 = Double.parseDouble(result.getText() + "");
                         decimal = false;
-                        finalans = input1 / input2;
-                        result.setText(null);
-                        Division = false;
+                        if(input2==0) {
+                            zeroError=true;
+                            Toast.makeText(getApplicationContext(), "You are trying to reach Infinity! ", Toast.LENGTH_LONG).show();
+                            Vibrator vi = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                            vi.vibrate(200);
+                        }
+                         else {
+                            finalans = input1 / input2;
+                            result.setText(null);
+                            Division = false;
+                        }
                     }
                     if (Remainder) {
                         input2 = Double.parseDouble(result.getText() + "");
@@ -259,7 +309,13 @@ public class MainActivity extends AppCompatActivity {
 
                     if (result.getText() != null) {
                         Intent in = new Intent(MainActivity.this, ResultActivity.class);
-                        in.putExtra("res", String.valueOf(finalans));
+
+                        if(zeroError) {
+                            in.putExtra("res", "Infinity");
+                            zeroError=false;
+                        }
+                        else
+                            in.putExtra("res", String.valueOf(finalans));
 
                         startActivity(in);
                     }
