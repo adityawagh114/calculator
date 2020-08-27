@@ -17,9 +17,12 @@ public class ResultActivity extends AppCompatActivity {
         TextView textView;
         textView= (TextView) findViewById(R.id.textView);
          getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Intent in=getIntent();
-        String result=in.getStringExtra("res");
-        result=result;
+        Intent in = getIntent();
+        String result = in.getStringExtra("res");
+
+
+        textView.setText(String.valueOf(result));
+
         textView.setText(result);
         Button closepage;
         closepage = (Button) findViewById(R.id.closebutton);

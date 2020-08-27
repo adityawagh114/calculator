@@ -9,13 +9,31 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static java.lang.Math.ceil;
+
 public class MainActivity extends AppCompatActivity {
 
-    double input1 = 0.0, input2 = 0.0;
-    double finalans=0.0;
+    double input1 = 0, input2 = 0;
+    double finalans=0;
     String Extra_text;
-    Button button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, buttonAdd, buttonSub,
-            buttonMul, buttonDiv, buttonEqual, buttonDel, buttonDot, buttonMod,nextpage;
+    Button button0;
+    Button button1;
+    Button button2;
+    Button button3;
+    Button button4;
+    Button button5;
+    Button button6;
+    Button button7;
+    Button button8;
+    Button button9;
+    Button buttonAdd;
+    Button buttonSub;
+    Button buttonMul;
+    Button buttonDiv;
+    Button buttonEqual;
+    Button buttonDel;
+    Button buttonDot;
+    Button buttonMod;
     TextView result;
     boolean Addition, Subtract, Multiplication, Division, Remainder, decimal;
     @Override
@@ -117,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (decimal) {
-                    Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"It dosent make sense ",Toast.LENGTH_LONG).show();
                 } else {
                     result.setText(String.format("%s.", result.getText()));
                     decimal = true;
@@ -195,8 +213,11 @@ public class MainActivity extends AppCompatActivity {
         buttonEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (result.getText() == "") {
+                    Toast.makeText(getApplicationContext(), "It dosent make sense ", Toast.LENGTH_LONG).show();
 
 
+                } else {
                     if (Addition) {
                         input2 = Double.parseDouble(result.getText() + "");
                         decimal = false;
@@ -232,16 +253,19 @@ public class MainActivity extends AppCompatActivity {
                         result.setText(null);
                         Remainder = false;
                     }
+                    finalans = finalans * 100;
+                    finalans = (int) finalans;
+                    finalans = finalans / 100;
 
                     if (result.getText() != null) {
                         Intent in = new Intent(MainActivity.this, ResultActivity.class);
-                           if(finalans%1==0)
-                               in.putExtra("res", String.valueOf(Math.round(finalans)));
-                               else
-                               in.putExtra("res", String.valueOf(finalans));
+                        in.putExtra("res", String.valueOf(finalans));
+
                         startActivity(in);
                     }
 
+
+                }
 
             }
         });
